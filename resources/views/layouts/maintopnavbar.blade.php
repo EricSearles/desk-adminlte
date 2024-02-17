@@ -15,7 +15,7 @@
             <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px;">
                 <a href="{{ route('profile.show') }}" class="dropdown-item">
                     <i class="mr-2 fas fa-file"></i>
-                    {{ __('My profile') }}
+                    {{ __('Meu Perfil') }}
                 </a>
                 <div class="dropdown-divider"></div>
                 <form method="POST" action="{{ route('logout') }}">
@@ -23,7 +23,7 @@
                     <a href="{{ route('logout') }}" class="dropdown-item"
                        onclick="event.preventDefault(); this.closest('form').submit();">
                         <i class="mr-2 fas fa-sign-out-alt"></i>
-                        {{ __('Log Out') }}
+                        {{ __('Sair') }}
                     </a>
                 </form>
             </div>
