@@ -1,3 +1,4 @@
+@inject('menus','App\Services\Settings\MenuService')
 <!-- Sidebar -->
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
@@ -11,32 +12,17 @@
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
             data-accordion="false">
-            <li class="nav-item">
-                <a href="{{ route('home') }}" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        {{ __('Dashboard') }}
-                    </p>
-                </a>
-            </li>
+            @foreach($menus->getAllMenus() as $menu)
+                <li class="nav-item">
 
-            <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
-                    <p>
-                        {{ __('Users') }}
-                    </p>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="{{ route('about') }}" class="nav-link">
-                    <i class="nav-icon far fa-address-card"></i>
-                    <p>
-                        {{ __('About us') }}
-                    </p>
-                </a>
-            </li>
+                    <a href="{{ route( $menu->route_name ) }}" class="nav-link">
+                        <i class="nav-icon {{ $menu->icon }}"></i>
+                        <p>
+                            {{ $menu->name }}
+                        </p>
+                    </a>
+                </li>
+            @endforeach
 
             <li class="nav-item">
                 <a href="#" class="nav-link">

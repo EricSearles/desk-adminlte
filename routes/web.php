@@ -31,4 +31,5 @@ Route::middleware('auth')->group(function () {
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('access-level',[\App\Http\Controllers\AccessLevelController::class, 'getAllAccessLevels'])->name('access-level.getAllAccessLevels');
+    Route::get('menus',[\App\Http\Controllers\Settings\MenuController::class, 'index'])->name('menu.index');
 });
