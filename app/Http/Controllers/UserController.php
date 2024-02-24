@@ -21,19 +21,15 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::paginate();
-
-        $usersAccessLevels = $this->accessLevelService->getUsersAccessLevel();
+        $users = User::with('accessLevels')->paginate();
         $accessLevels = $this->accessLevelService->getAllAccessLevels();
 
-        //dd($usersAccessLevels);
-
-        return view('users.index', compact('users', 'usersAccessLevels', 'accessLevels'));
+        return view('users.index', compact('users', 'accessLevels'));
     }
 
     public function retornaUsuarios()
     {
-        $users = user::all();
+        $users = User::with('accessLevels')->paginate();
 
         return response()->json([
             'results' => $users

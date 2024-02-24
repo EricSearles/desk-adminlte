@@ -23,21 +23,22 @@ class AccessLevelRepository
      * Retorna todos os niveis de acesso de usuarios
      * @return object
      */
-    public function getAllAccessLevels(): object
+    public function
+    getAllAccessLevels(): object
     {
         return $this->entity::all();
     }
 
     public function getUserAccessLevel()
     {
-        $userAccessLevel = DB::table('users_access_levels')
-            ->join('users', 'users_access_levels.user_id', '=', 'users.id')
-            ->join('access_levels', 'users_access_levels.access_level_id', '=', 'access_levels.id')
+        $userAccessLevel = DB::table('access_level_user')
+            ->join('users', 'access_levels.user_id', '=', 'users.id')
+            ->join('access_levels', 'access_level_user.access_level_id', '=', 'access_levels.id')
             ->select(
                 'users.id',
                 'users.name',
                 'users.email',
-                'access_levels.name as level',
+                'access_levels.user_role',
                 'access_levels.id as level_id'
             )
             ->get();

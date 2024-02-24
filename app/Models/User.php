@@ -48,4 +48,8 @@ class User extends Authenticatable
     ];
 
 
+    public function accessLevels()
+    {
+        return $this->belongsToMany('App\Models\AccessLevel');
+    }
 }
