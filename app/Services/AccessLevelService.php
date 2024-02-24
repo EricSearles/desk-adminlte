@@ -22,5 +22,10 @@ class AccessLevelService
         return $this->repository->getAllAccessLevels();
     }
 
+    public function getUsersAccessLevel()
+    {
+        return $this->repository->getUserAccessLevel();
+    }
+
 
 }

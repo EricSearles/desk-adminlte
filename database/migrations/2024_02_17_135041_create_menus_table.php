@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('icon');
+            $table->string('posicao');
+            $table->string('route_name');
             $table->string('order');
             $table->integer('status_id')->unsigned();
             $table->foreign('status_id')->references('id')->on('status');
