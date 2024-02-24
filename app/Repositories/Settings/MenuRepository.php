@@ -18,7 +18,7 @@ class MenuRepository
 
     public function getAllMenus()
     {
-        return $this->entity::all();
+        return $this->entity::orderBy('order')->get();
     }
 
 
