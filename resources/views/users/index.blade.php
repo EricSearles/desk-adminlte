@@ -19,9 +19,9 @@
             <div class="row">
                 <div class="col-lg-12">
 
-                    <div class="alert alert-info">
-                        Sample table page
-                    </div>
+{{--                    <div class="alert alert-info">--}}
+{{--                        Sample table page--}}
+{{--                    </div>--}}
 
                     <div class="card">
                         <div class="card-body p-0">
@@ -31,13 +31,30 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Permissão</th>
+                                        <th>Alterar Nivel Acesso</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($users as $user)
+                                @foreach($usersAccessLevels as $user)
                                     <tr>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>{{ $user->level }}</td>
+                                        <td>
+                                            <div class="icheck-primary icheck-inline">
+                                                @foreach($accessLevels as $accessLevel)
+                                                    <input
+                                                        type="radio"
+                                                        id="{{ $accessLevel->id }}"
+                                                        name="nivel"
+                                                        @if($user->level_id == $accessLevel->id)
+                                                        checked="true"/>
+                                                        @endif
+                                                    <label for="radio"> {{ $accessLevel->name }} </label>
+                                                @endforeach
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

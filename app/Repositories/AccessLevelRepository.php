@@ -28,6 +28,22 @@ class AccessLevelRepository
         return $this->entity::all();
     }
 
+    public function getUserAccessLevel()
+    {
+        $userAccessLevel = DB::table('users_access_levels')
+            ->join('users', 'users_access_levels.user_id', '=', 'users.id')
+            ->join('access_levels', 'users_access_levels.access_level_id', '=', 'access_levels.id')
+            ->select(
+                'users.id',
+                'users.name',
+                'users.email',
+                'access_levels.name as level',
+                'access_levels.id as level_id'
+            )
+            ->get();
+        return  $userAccessLevel;
+    }
+
     /**
      * Retorna nivel de acesso de usuario pelo id do nivel de acesso
      * @param int $id
@@ -37,6 +53,7 @@ class AccessLevelRepository
     {
         return $this->entity->where('id', $id)->first();
     }
+
 
     /**
      * Cria um novo nivel de acesso para usuario
