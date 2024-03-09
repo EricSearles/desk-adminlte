@@ -32,4 +32,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('access-level',[\App\Http\Controllers\AccessLevelController::class, 'getAllAccessLevels'])->name('access-level.getAllAccessLevels');
     Route::get('menus',[\App\Http\Controllers\Settings\MenuController::class, 'index'])->name('menu.index');
+
+    Route::get('clients', [\App\Http\Controllers\ClientController::class, 'index'])->name('clients.index');
 });
