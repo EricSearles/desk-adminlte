@@ -4,8 +4,10 @@ namespace App\Services;
 
 use App\Repositories\AccessLevelRepository;
 
+
 class AccessLevelService
 {
+
     protected $repository;
 
     /**
