@@ -26,10 +26,10 @@
             @auth
             <a href="{{ url('/home') }}" class="">Home</a>
             @else
-            <a href="{{ route('login') }}" class="">Log in</a>
+            <a href="{{ route('login') }}" class="">Entrar</a>
 
             @if (Route::has('register'))
-            <a href="{{ route('register') }}" class="">Register</a>
+            <a href="{{ route('register') }}" class="">Cadastro</a>
             @endif
             @endauth
         </div>
@@ -38,12 +38,12 @@
     <div class="header">
         <img src="{{ asset('images/Header.png') }}" alt="" id="imagem header" width="100%" />
     </div>
-    <div class="conteudo">
+    <!-- <div class="conteudo">
         <h2>"The easy way to create your championship"</h2>
         <a href="{{ route('register') }}" class="btn btn-outline-primary">Crie sua competição agora!</a>
-    </div>
+    </div> -->
     <div class="footer">
-        <p>&copy; Searles Soluções Web 2021 - <?php echo date('Y'); ?> - Minha Competição</p>
+        <p>&copy; Searles Soluções Web 2021 - <?php echo date('Y'); ?> - Locadora de veículos</p>
     </div>
 
     </div>

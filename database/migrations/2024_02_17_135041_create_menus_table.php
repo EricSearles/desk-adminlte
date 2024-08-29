@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('icon');
             $table->string('posicao');
+            $table->string('tipo');
             $table->string('route_name');
             $table->string('order');
             $table->integer('status_id')->unsigned();
