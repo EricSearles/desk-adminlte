@@ -1,4 +1,5 @@
 @inject('menus','App\Services\Settings\MenuService')
+
 <!-- Sidebar -->
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
@@ -7,12 +8,11 @@
             <a href="{{ route('profile.show') }}" class="d-block">{{ Auth::user()->name }}</a>
         </div>
     </div>
-
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
             data-accordion="false">
-            @foreach($menus->getAllMenus() as $menu)
+            @foreach($menus->getAccessibleMenusForUser(Auth::user()) as $menu)
                 <li class="nav-item">
                 @if($menu->id == 2)
                     <a href="#" class="nav-link">
@@ -31,12 +31,12 @@
                         </li>
                     </ul>
                     @elseif($menu->id != 2)
-                    <a href="{{ route( $menu->route_name ) }}" class="nav-link">
-                        <i class="nav-icon {{ $menu->icon }}"></i>
-                        <p>
-                            {{ $menu->name }}
-                        </p>
-                    </a>
+                            <a href="{{route($menu->route_name, ['type_id' => $menu->tipo]) }}" class="nav-link">
+                                <i class="nav-icon {{ $menu->icon }}"></i>
+                                <p>
+                                    {{ $menu->name }}
+                                </p>
+                            </a>
                 </li>
                 @endif
             @endforeach
