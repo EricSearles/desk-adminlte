@@ -19,7 +19,7 @@ class AccessLevelService
     }
 
 
-    public function getAllAccessLevels(): object
+    public function getAllAccessLevel(): object
     {
         return $this->repository->getAllAccessLevels();
     }
@@ -27,6 +27,11 @@ class AccessLevelService
     public function getUsersAccessLevel()
     {
         return $this->repository->getUserAccessLevel();
+    }
+
+    public function userAccessLevel($id)
+    {
+        return $this->repository->getAccessLevelById($id);
     }
 
 

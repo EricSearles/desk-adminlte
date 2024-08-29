@@ -21,5 +21,19 @@ class MenuRepository
         return $this->entity::orderBy('order')->get();
     }
 
+    public function getMenusByAccessLevels($accessLevelIds)
+    {
+        return Menu::whereHas('accessLevels', function($query) use ($accessLevelIds) {
+            $query->whereIn('access_levels.id', $accessLevelIds);
+        })->get();
+    }
+
+
+
+    public function getUserMenuLeft($userId)
+    {
+        //return Menu::all()->where()
+    }
+
 
 }

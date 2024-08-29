@@ -52,7 +52,7 @@ class AccessLevelRepository
      */
     public function getAccessLevelById(int $id): object
     {
-        return $this->entity->where('id', $id)->first();
+        return $this->entity->where('user_id', $id)->first();
     }
 
 

@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AccessLevelUser extends Model
+class MenuAccessLevel extends Model
 {
     use HasFactory;
 
-    protected $table = 'access_level_user';
+    protected $table = 'menu_access_levels';
 }

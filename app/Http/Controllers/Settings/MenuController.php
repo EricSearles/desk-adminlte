@@ -19,5 +19,23 @@ class MenuController extends Controller
         $this->menuService = new MenuService();
     }
 
+    public function getAllMenus()
+    {
+        $menuscontroller = $this->menuService->getAllMenus();
+
+        return view('./layouts/navigation', compact($menuscontroller));
+    }
+
+    public function getUserMenus($userId)
+    {
+
+    }
+
+    public function getUserMenuLeft()
+    {
+
+
+    }
+
 
 }
