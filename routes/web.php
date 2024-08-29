@@ -26,9 +26,14 @@ Route::middleware('auth')->group(function () {
     Route::view('about', 'about')->name('about');
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::get('users/type/{type_id}', [\App\Http\Controllers\UserController::class, 'getUserByType'])->name('users.type');
+    
+   // Route::get('users', [\App\Http\Controllers\UserController::class, 'show'])->name('users.show');
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
+    Route::get('clients/type/{type_id}', [\App\Http\Controllers\ClientController::class, 'getClients'])->name('clients.type');
 
     Route::get('access-level',[\App\Http\Controllers\AccessLevelController::class, 'getAllAccessLevels'])->name('access-level.getAllAccessLevels');
     Route::get('menus',[\App\Http\Controllers\Settings\MenuController::class, 'index'])->name('menu.index');
