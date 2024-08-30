@@ -31,7 +31,7 @@
                         </li>
                     </ul>
                     @elseif($menu->id != 2)
-                            <a href="{{route($menu->route_name, ['type_id' => $menu->tipo]) }}" class="nav-link">
+                            <a href="{{route($menu->route_name) }}" class="nav-link">
                                 <i class="nav-icon {{ $menu->icon }}"></i>
                                 <p>
                                     {{ $menu->name }}
