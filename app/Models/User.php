@@ -79,4 +79,9 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function enderecos()
+    {
+        return $this->morphMany(Endereco::class, 'addressable');
+    }
+
 }

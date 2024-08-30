@@ -29,7 +29,32 @@ class UserRepository
         })->paginate(10); // Ajuste o número de itens por página conforme necessário
     }
 
+    public function find($id)
+    {
+        return $this->model->find($id);
+    }
 
+    public function paginateUsers($perPage = 10)
+    {
+        return $this->model->paginate($perPage);
+    }
+
+    public function saveEndereco($user, $enderecoData)
+    {
+        return $user->enderecos()->create($enderecoData);
+    }
+
+    public function getUserWithEnderecos($id)
+    {
+        return $this->model->with('enderecos')->find($id);
+    }
+
+    //verifica se o usuario possui endereco cadastrado
+    public function hasEndereco($id)
+    {
+        $user = $this->model->find($id);
+        return $user && $user->enderecos()->exists();
+    }
 
 
 }
