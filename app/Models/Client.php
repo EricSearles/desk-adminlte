@@ -10,4 +10,9 @@ class Client extends Model
     use HasFactory;
 
     protected $table = 'clientes';
+
+    public function enderecos()
+    {
+        return $this->morphMany(Endereco::class, 'addressable');
+    }
 }

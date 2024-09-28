@@ -80,6 +80,7 @@ class UserController extends Controller
 
     public function buscaDadosUsuario($id)
     {
+        $user = $this->userService->getUserWithEnderecos($id);
         return "OI";
     }
 

@@ -2,29 +2,50 @@
 
 namespace App\Services;
 
-use App\Services\UserService;
-use App\Services\AccessLevelService;
+use App\Repositories\ClientRepository;
 
 class ClientService
 {
 
-    private $userService;
-    private $accessLevelService;
+    private $clientRepository;
 
-    public function __construct(UserService $userService, AccessLevelService $accessLevelService)
+    public function __construct(ClientRepository $clientRepository)
     {
-        $this->userService = $userService;
-        $this->accessLevelService = $accessLevelService;
+        $this->clientRepository = $clientRepository;
     }
 
-    public function getClients($type_id)
+    public function addEnderecoToClient($clientId, $enderecoData)
     {
-        return $this->userService->getUserByType($type_id);
+        $client = $this->clientRepository->find($clientId);
+
+        if (!$client) {
+            throw new \Exception('CLiente não encontrado');
+        }
+
+        return $this->clientRepository->saveEndereco($client, $enderecoData);
     }
 
-    public function getAllAccessLevels()
+    public function getClientWithEnderecos($clientId)
     {
-        return $this->accessLevelService->getAllAccessLevel();
+        return $this->clientRepository->getClientWithEnderecos($clientId);
+    }
+
+    //verifica se o usuario possui endereco cadastrado
+    public function clientHasEndereco($clientId)
+    {
+        return $this->clientRepository->hasEndereco($clientId);
+    }
+
+    //Busca dados de clientes com endereço
+    public function getCLientsWithEnderecoStatusPaginated($perPage = 10)
+    {
+        $paginatedClients = $this->clientRepository->paginateClients($perPage);
+
+        foreach ($paginatedClients as $client) {
+            $client->hasEndereco = $this->clientRepository->hasEndereco($client->id);
+        }
+
+        return $paginatedClients;
     }
 
 
